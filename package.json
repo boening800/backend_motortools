@@ -1,19 +1,28 @@
 {
   "name": "BACKEND_MOTORTOOLS",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon src/index.js"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boening800/backend_motortools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/boening800/backend_motortools/issues"
+  },
+  "homepage": "https://github.com/boening800/backend_motortools#readme",
+  "description": ""
 }

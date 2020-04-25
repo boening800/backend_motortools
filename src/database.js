@@ -7,6 +7,13 @@ const mysqlConnection = mysql.createConnection({
     password:'Motortools$01',
     database:'bd_motortools'
 });
+// const mysqlConnection = mysql.createConnection({
+//     host:'localhost',
+//     port:3306,
+//     user:'root',
+//     password:'',
+//     database:'bd_motortools'
+// });
 
 mysqlConnection.connect(function(err){
     if(err){

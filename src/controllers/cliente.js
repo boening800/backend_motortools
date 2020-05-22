@@ -1,5 +1,5 @@
 const mysqlConnection = require('../database');
-var jwt= require('../services/jwt');
+var jwt= require('../services/jwt_cli');
 
 function LoginCliente(req,res){
     const {usuario_cli,clave_cli} = req.body;

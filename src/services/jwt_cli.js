@@ -1,8 +1,9 @@
-var jwt = require('jsonwebtoken');
+var jwt_cli = require('jsonwebtoken');
 
 var secret = 'clave_secreta_curso_desarrollar_red_social_angular';
 
 exports.createToken = function(user){
+    console.log(user);
     var payload = {
         nom_cli: user.nom_cli,
         apepat_cli: user.apepat_cli,
@@ -11,5 +12,5 @@ exports.createToken = function(user){
         expiresIn: 1440
     };
 
-    return jwt.sign(payload, secret);
+    return jwt_cli.sign(payload, secret);
 };

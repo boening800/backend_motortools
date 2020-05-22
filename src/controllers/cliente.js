@@ -1,5 +1,5 @@
 const mysqlConnection = require('../database');
-var jwt= require('../services/jwt_cli');
+var jwt_cli= require('../services/jwt_cli');
 
 function LoginCliente(req,res){
     const {usuario_cli,clave_cli} = req.body;
@@ -8,7 +8,7 @@ function LoginCliente(req,res){
         if(!err){
             if(rows.length == 1){
                 return res.status(200).send({
-                    token:jwt.createToken(rows[0])
+                    token:jwt_cli.createToken(rows[0])
                 });
                 // res.json({
                 //     estado:'1',

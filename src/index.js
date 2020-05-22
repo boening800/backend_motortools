@@ -13,9 +13,11 @@ app.set('llave', config.llave);
 app.use(express.json(),express.urlencoded({extended:true}));
 
 //Routes
-
-app.use(require('./routes/empleados'));
+app.use(require('./routes/alquiler'));
+app.use(require('./routes/empleado'));
 app.use(require('./routes/cliente'));
+app.use(require('./routes/vehiculo'));
+
 
 
 //Iniciar Servidor

@@ -26,12 +26,13 @@ function LoginCliente(req,res){
         }
     })
 }
+
 function CrearCliente(req,res){
     mysqlConnection.query('SELECT MAX(id_cli) AS id_cli FROM tb_cliente',(err,rows,fields)=>{
         if(!err){
             const id_max = rows[0]['id_cli'] + 1;
             const {
-                nom_clim,apepat_cli,apemat_cli,dni_cli,
+                nom_cli,apepat_cli,apemat_cli,dni_cli,
                 correo_cli,fec_nacimiento_cli,licencia_cli,
                 usuario_cli,clave_cli
             }=req.body;
@@ -40,7 +41,7 @@ function CrearCliente(req,res){
                     "correo_cli,fec_nacimiento_cli,licencia_cli,"+
                     "usuario_cli,clave_cli,estado_cli)"+
                 "VALUES ("+id_max+",?,?,?,?,?,?,?,?,?,1)",
-                [nom_clim,apepat_cli,apemat_cli,
+                [nom_cli,apepat_cli,apemat_cli,
                     dni_cli,correo_cli,fec_nacimiento_cli,
                     licencia_cli,usuario_cli,clave_cli],(err,rows,filds)=>{
                     if(!err){
@@ -57,11 +58,51 @@ function CrearCliente(req,res){
                 });
         }else{
             console.log(err);
+            return res.json(err);
         }
     });
 }
 
+function ValidarClientexDNI(req,res){
+    const {dni_cli} = req.params;
+    mysqlConnection.query('SELECT * FROM tb_cliente WHERE dni_cli=?',[dni_cli],(err,rows)=>{
+        if(!err){
+            console.log(rows[0])
+            if(rows.length == 1){
+                return res.json({
+                    estado:'1',
+                    mensaje:'Cliente existe',
+                    data:rows[0]
+                });
+            }else{
+                return res.json({
+                    estado:'2',
+                    mensaje:'Cliente no existe' 
+                });
+            }
+        }else{
+            console.log(err);
+            return res.json(err);
+        }
+    });
+}
+
+
+function ListarClientes(req,res){
+    mysqlConnection.query('SELECT * FROM tb_cliente',(err,rows)=>{
+        if(!err){
+            return res.json(rows);
+        }else{
+            console.log(err);
+            return res.json(err);
+        }
+    });
+}
+
+
 module.exports={
     CrearCliente,
-    LoginCliente
+    LoginCliente,
+    ValidarClientexDNI,
+    ListarClientes
 }

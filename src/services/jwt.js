@@ -4,13 +4,13 @@ var secret = 'clave_secreta_curso_desarrollar_red_social_angular';
 
 exports.createToken = function(user){
     var payload = {
-        sub: user._id,
-        name: user.name,
-        surname: user.surname,
-        nick: user.nick,
-        email: user.email,
-        role: user.role,
-        image: user.image,
+        nom_usu: user.nom_usu,
+        nom_emp: user.nom_emp,
+        apepat_emp: user.apepat_emp,
+        apemat_emp: user.apemat_emp,
+        dni_emp: user.dni_emp,
+        id_rol: user.id_rol,
+        nom_rol: user.nom_rol,
         expiresIn: 1440
     };
 

@@ -9,6 +9,12 @@ exports.createToken = function(user){
         apepat_cli: user.apepat_cli,
         apemat_cli: user.apemat_cli,
         dni_cli: user.dni_cli,
+        correo_cli: user.correo_cli,
+        fec_nacimiento_cli: user.fec_nacimiento_cli,
+        licencia_cli: user.licencia_cli,
+        usuario_cli: user.usuario_cli,
+        clave_cli: user.clave_cli,
+        estado_cli: user.estado_cli,
         expiresIn: 1440
     };
 

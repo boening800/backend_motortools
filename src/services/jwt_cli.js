@@ -5,6 +5,7 @@ var secret = 'clave_secreta_curso_desarrollar_red_social_angular';
 exports.createToken = function(user){
     console.log(user);
     var payload = {
+        id_cli:user.id_cli,
         nom_cli: user.nom_cli,
         apepat_cli: user.apepat_cli,
         apemat_cli: user.apemat_cli,

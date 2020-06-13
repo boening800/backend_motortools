@@ -63,6 +63,30 @@ function CrearCliente(req,res){
     });
 }
 
+function ActualizarCliente(req,res){
+    
+    const {nom_cli,apepat_cli,apemat_cli,dni_cli,correo_cli,fec_nacimiento_cli,licencia_cli,usuario_cli,clave_cli} = req.body;
+    const {id_cli} = req.params;
+    mysqlConnection.query(
+        "UPDATE tb_cliente SET nom_cli=?,apepat_cli=?,apemat_cli=?,dni_cli=?,correo_cli=?,fec_nacimiento_cli=?,licencia_cli=?,usuario_cli=?,clave_cli=?,estado_cli='1' WHERE id_cli=?",
+        [nom_cli,apepat_cli,apemat_cli,
+            dni_cli,correo_cli,fec_nacimiento_cli,
+            licencia_cli,usuario_cli,clave_cli,id_cli],(err,rows,filds)=>{
+            if(!err){
+                console.log(nom_cli,apepat_cli,apemat_cli,dni_cli,correo_cli,fec_nacimiento_cli,licencia_cli,usuario_cli,clave_cli);
+                return res.json({
+                    estado:'1',
+                    mensaje:'Actualizado correctamente'
+                });
+            }else{
+                console.log(err);
+                return res.json({
+                    mensaje:'Error al actualizar'
+                });                        
+            }
+        });
+}
+
 function ValidarClientexDNI(req,res){
     const {dni_cli} = req.params;
     mysqlConnection.query('SELECT * FROM tb_cliente WHERE dni_cli=?',[dni_cli],(err,rows)=>{
@@ -104,5 +128,6 @@ module.exports={
     CrearCliente,
     LoginCliente,
     ValidarClientexDNI,
-    ListarClientes
+    ListarClientes,
+    ActualizarCliente
 }

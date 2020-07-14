@@ -17,7 +17,10 @@ app.use(require('./routes/alquiler'));
 app.use(require('./routes/empleado'));
 app.use(require('./routes/cliente'));
 app.use(require('./routes/vehiculo'));
-
+app.use(require('./routes/adicionales'));
+app.use(require('./routes/detalle_adicionales'));
+app.use(require('./routes/conductor'));
+app.use(require('./routes/factura'));
 
 
 //Iniciar Servidor

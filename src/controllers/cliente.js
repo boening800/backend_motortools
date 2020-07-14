@@ -123,11 +123,24 @@ function ListarClientes(req,res){
     });
 }
 
+function BuscarClientexId(req,res){
+    const {id_cli}=req.params;
+    mysqlConnection.query('SELECT * FROM tb_cliente WHERE id_cli=?',[id_cli],(err,rows)=>{
+        if(!err){
+            return res.json(rows);
+        }else{
+            console.log(err);
+            return res.json(err);
+        }
+    });
+}
+
 
 module.exports={
     CrearCliente,
     LoginCliente,
     ValidarClientexDNI,
     ListarClientes,
-    ActualizarCliente
+    ActualizarCliente,
+    BuscarClientexId
 }

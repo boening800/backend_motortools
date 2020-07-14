@@ -9,5 +9,5 @@ router.post('/api/cliente',ClienteController.CrearCliente);
 router.get('/api/validarclientexdni/:dni_cli',ClienteController.ValidarClientexDNI);
 router.get('/api/listarClientes',ClienteController.ListarClientes);
 router.post('/api/actualizarCliente/:id_cli',ClienteController.ActualizarCliente);
-
+router.get('/api/BuscarClienteid/:id_cli',ClienteController.BuscarClientexId);
 module.exports = router;
